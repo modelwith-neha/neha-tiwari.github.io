@@ -64,11 +64,16 @@
       padding: 1rem;
       font-size: 0.9rem;
     }
-  </style>
+  @keyframes scrollFade {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+</style>
 </head>
 <body>
   <header>
     <h1>Neha Tiwari</h1>
+    <p style="font-size: 1rem; margin-top: -10px; color: #f0f0f0;">Open to AI-focused validation, technical PM, or analytics strategy roles in tech-forward teams — blending Computer Science and Business insight.</p>
     <h3>Engineer. Analyst. Storyteller with a soft spot for debugs and dashboards.</h3>
     <div class="contact-links">
       <a href="mailto:ntiwar12@asu.edu">Email</a>
@@ -80,7 +85,7 @@
   <section>
     <h2>About Me</h2>
     <p>
-      👋 I’m Neha — a validation engineer turned data enthusiast, navigating the world of machine learning and business analytics from the labs of Intel and Qualcomm to the classrooms of Arizona State University. With 6+ years of hands-on engineering, I now dive deep into data to uncover insights and solve real-world problems using tech, models, and a little bit of curiosity.
+      👋 I’m Neha — a validation engineer turned data enthusiast, navigating the world of machine learning and business analytics from the labs of Intel and Qualcomm to the classrooms of Arizona State University. With 6+ years of hands-on engineering, I now dive deep into data to uncover insights and solve real-world problems using tech, models, and a little bit of curiosity. Open to AI-focused validation, technical PM, or analytics strategy roles in tech-forward teams.
     </p>
   </section>
 
@@ -116,31 +121,49 @@
 </section>
 
 <section>
-  <h2>🚀 Journey So Far</h2>
-  <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
-    <div style="flex: 1 1 300px;">
-      <h3>🎓 Education</h3>
+  <h2>🧠 Skills</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+    <div>
+      <h4>Validation</h4>
       <ul>
-        <li><strong><a href="https://wpcarey.asu.edu/" target="_blank">ASU (MS Business Analytics)</a></strong> – Present</li>
-        <li><strong><a href="https://www.nitgoa.ac.in/" target="_blank">NIT Goa (M.Tech CS)</a></strong> – GATE (Graduate Aptitude Test in Engineering) AIR 2027</li>
-        <li><strong><a href="https://www.rajgurucollege.com/" target="_blank">Shaheed Rajguru College, DU (B.Tech CS)</a></strong></li>
+        <li>Power Management</li>
+        <li>Concurrency & SoC Flows</li>
+        <li>FPGA, Simics, Silicon Debug</li>
+        <li>Coverage & Fuse Automation</li>
       </ul>
     </div>
-    <div style="flex: 1 1 300px;">
-      <h3>💼 Work</h3>
+    <div>
+      <h4>ML & Analytics</h4>
       <ul>
-  <li>
-    <a href="https://www.intel.com/" target="_blank" style="text-decoration: none; color: #333;">
-      <strong>Intel</strong> – System Validation Engineer (2018–2021, 2022–2024)
-    </a>
-  </li>
-  <li>
-    <a href="https://www.qualcomm.com/" target="_blank" style="text-decoration: none; color: #333;">
-      <strong>Qualcomm</strong> – Senior Validation Engineer (2021–2022)
-    </a>
-  </li>
-</ul>
+        <li>Python (NumPy, Pandas, Scikit-learn)</li>
+        <li>Power BI, Tableau, Excel Solver</li>
+        <li>Descriptive & Predictive Analytics</li>
+        <li>RAG, PyTorch, Gurobi</li>
       </ul>
+    </div>
+    <div>
+      <h4>Tools & Collaboration</h4>
+      <ul>
+        <li>JIRA, Confluence, Git</li>
+        <li>MATLAB, SQL, HTML</li>
+        <li>Agile & RCA / FMEA</li>
+        <li>UAT, Logs, Oscilloscopes</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>🚀 Journey So Far</h2>
+  <div style="overflow-x: auto; white-space: nowrap; padding: 1rem 0;">
+    <div style="display: flex; align-items: center; gap: 2rem; min-width: 1000px; animation: scrollFade 1.5s ease-in-out forwards; opacity: 0;">
+      <div><strong>2013–17</strong><br>B.Tech CS<br><a href="https://www.rajgurucollege.com/" target="_blank">DU – Rajguru College</a></div>
+      <div><strong>2017–19</strong><br>M.Tech CS<br><a href="https://www.nitgoa.ac.in/" target="_blank">NIT Goa</a></div>
+      <div><strong>2018–19</strong><br>Internship<br><a href="https://www.intel.com/" target="_blank">Intel</a></div>
+      <div><strong>2019–21</strong><br>System Validation Engineer<br><a href="https://www.intel.com/" target="_blank">Intel DCG</a></div>
+      <div><strong>2021–22</strong><br>Senior Validation Engineer<br><a href="https://www.qualcomm.com/" target="_blank">Qualcomm ConVex</a></div>
+      <div><strong>2022–24</strong><br>System Software Validation Engineer<br><a href="https://www.intel.com/" target="_blank">Intel CCG</a></div>
+      <div><strong>2024–25</strong><br>MS Business Analytics<br><a href="https://wpcarey.asu.edu/" target="_blank">ASU</a></div>
     </div>
   </div>
 </section>
@@ -151,7 +174,7 @@
   </section>
 
   <footer>
-    <p>&copy; 2025 Neha Tiwari. Powered by coffee, curiosity, and clean code.</p>
+    <p>&copy; 2025 Neha Tiwari. Powered by initiative, precision, and purpose.</p>
     <p>
       <a href="https://www.linkedin.com/in/neha-tiwarii/" target="_blank" style="color: white; text-decoration: underline;">
         Connect with me on LinkedIn
