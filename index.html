@@ -1,4 +1,69 @@
-// Smooth scrolling for navigation links
+/* Skills Statistics */
+        .skills-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            padding: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .stat-card .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .stat-label {
+            color: var(--text-light);
+            font-weight: 500;
+        }        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -162,6 +227,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neha Tiwari | Product Leader & AI Innovator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -192,6 +260,11 @@
             line-height: 1.6;
             color: var(--text-dark);
             scroll-behavior: smooth;
+            font-weight: 400;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', monospace;
         }
 
         /* Navigation */
@@ -1236,19 +1309,80 @@
                     <h3 class="project-title">AI Tutor Platform</h3>
                     <div class="project-award">1st Place - ASU × NVIDIA Hackathon 2025</div>
                     <p class="project-description">
-                        Led technical design and product strategy for a GPU-accelerated, semi-Socratic RAG+LLM tutor. 
-                        Balanced user learning outcomes with system scalability, demonstrating rapid innovation with cutting-edge AI.
+                        <strong>Hackathon Winner:</strong> GPU-accelerated, semi-Socratic RAG+LLM tutor for Data Science education. 
+                        Features flashcards, game mode, and point system with advanced knowledge retrieval and interactive learning mechanisms.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">RAG</span>
                         <span class="tech-tag">LLM Integration</span>
                         <span class="tech-tag">GPU Acceleration</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Jupyter Notebook</span>
+                        <span class="tech-tag">Game Design</span>
+                        <span class="tech-tag">Educational AI</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://www.youtube.com/watch?v=7OfkW2ry0wI" class="project-link">▶ Watch Demo</a>
-                        <a href="#" class="project-link">View Code →</a>
+                        <a href="https://www.youtube.com/watch?v=7OfkW2ry0wI" class="project-link" target="_blank">▶ Watch Demo</a>
+                        <a href="https://github.com/modelwith-neha/AI-Tutor" class="project-link" target="_blank">View Code →</a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-icon">📊</div>
+                    <h3 class="project-title">IBM Employee Attrition Predictor</h3>
+                    <p class="project-description">
+                        <strong>94%+ Accuracy:</strong> Comprehensive ML pipeline with 12+ models built for workforce analytics. 
+                        Delivered actionable insights for HR retention strategies, featuring advanced feature engineering and model comparison.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scikit-Learn</span>
+                        <span class="tech-tag">Jupyter Notebook</span>
+                        <span class="tech-tag">Predictive Analytics</span>
+                        <span class="tech-tag">HR Analytics</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/modelwith-neha/IBM-attrition" class="project-link" target="_blank">View Analysis →</a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-icon">🎵</div>
+                    <h3 class="project-title">Spotify Songs Popularity Predictor</h3>
+                    <p class="project-description">
+                        <strong>Music Analytics:</strong> Advanced machine learning model to predict song popularity using audio features, 
+                        artist metrics, and market trends. Comprehensive data analysis of streaming patterns and user preferences.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Data Science</span>
+                        <span class="tech-tag">Feature Engineering</span>
+                        <span class="tech-tag">Regression Analysis</span>
+                        <span class="tech-tag">Jupyter Notebook</span>
+                        <span class="tech-tag">Music Analytics</span>
+                        <span class="tech-tag">Predictive Modeling</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/modelwith-neha/SpotifySongsPoupularity" class="project-link" target="_blank">Explore Data →</a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-icon">📈</div>
+                    <h3 class="project-title">Customer Churn Analysis</h3>
+                    <p class="project-description">
+                        <strong>Business Intelligence:</strong> End-to-end customer churn prediction system with advanced analytics. 
+                        Features customer segmentation, risk scoring, and actionable insights for customer retention strategies.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Customer Analytics</span>
+                        <span class="tech-tag">Classification Models</span>
+                        <span class="tech-tag">Business Intelligence</span>
+                        <span class="tech-tag">Jupyter Notebook</span>
+                        <span class="tech-tag">Risk Assessment</span>
+                        <span class="tech-tag">Segmentation</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/modelwith-neha/CustomerChurn" class="project-link" target="_blank">View Analysis →</a>
                     </div>
                 </div>
 
@@ -1256,8 +1390,8 @@
                     <div class="project-icon">⚡</div>
                     <h3 class="project-title">AI Inference Optimizer</h3>
                     <p class="project-description">
-                        Designed sophisticated MILP optimization model balancing cost and latency for GPT workload routing 
-                        across GPUs and LLMs. Enables better cost-latency-quality trade-off decisions for critical AI workloads.
+                        <strong>Performance Optimization:</strong> Sophisticated MILP optimization model balancing cost and latency for GPT workload routing 
+                        across GPUs and LLMs. Enables intelligent cost-latency-quality trade-off decisions for critical AI workloads.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">MILP</span>
@@ -1265,46 +1399,30 @@
                         <span class="tech-tag">Optimization</span>
                         <span class="tech-tag">Cost Analysis</span>
                         <span class="tech-tag">Performance Modeling</span>
+                        <span class="tech-tag">GPU Computing</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link">View Details →</a>
-                    </div>
-                </div>
-
-                <div class="project-card fade-in">
-                    <div class="project-icon">📊</div>
-                    <h3 class="project-title">Employee Attrition Predictor</h3>
-                    <p class="project-description">
-                        Built comprehensive ML pipeline with 12+ models achieving 94%+ accuracy on IBM HR dataset. 
-                        Delivered actionable workforce insights to shape HR retention strategies and reduce turnover costs.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Machine Learning</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Scikit-Learn</span>
-                        <span class="tech-tag">Data Analysis</span>
-                        <span class="tech-tag">Predictive Analytics</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">View Analysis →</a>
+                        <a href="https://github.com/modelwith-neha" class="project-link" target="_blank">View Portfolio →</a>
                     </div>
                 </div>
 
                 <div class="project-card fade-in">
                     <div class="project-icon">🏛️</div>
-                    <h3 class="project-title">Indian Parliament Apps</h3>
+                    <h3 class="project-title">Indian Parliament Digital Platform</h3>
                     <p class="project-description">
-                        Developed official Android applications for India's Parliament houses (Rajya Sabha & Lok Sabha) 
-                        during internship at National Informatics Centre. Provided nationwide digital access to legislative proceedings.
+                        <strong>Government Technology:</strong> Official Android applications for India's Parliament houses (Rajya Sabha & Lok Sabha) 
+                        during internship at National Informatics Centre. Provided nationwide digital access to legislative proceedings and parliamentary data.
                     </p>
                     <div class="project-tech">
-                        <span class="tech-tag">Android</span>
-                        <span class="tech-tag">Mobile Development</span>
+                        <span class="tech-tag">Android Development</span>
+                        <span class="tech-tag">Mobile Apps</span>
                         <span class="tech-tag">Government Tech</span>
                         <span class="tech-tag">Public Service</span>
+                        <span class="tech-tag">Digital Governance</span>
+                        <span class="tech-tag">NIC</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link">Learn More →</a>
+                        <a href="https://www.linkedin.com/in/neha-tiwarii/" class="project-link" target="_blank">Learn More →</a>
                     </div>
                 </div>
             </div>
@@ -1315,83 +1433,177 @@
     <section id="skills" class="skills">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Core Competencies</h2>
+                <h2 class="section-title">Technical Expertise & Core Competencies</h2>
                 <p class="section-subtitle">
-                    A comprehensive skill set spanning product strategy, technical leadership, and cutting-edge AI/ML
+                    A comprehensive skill set spanning product strategy, technical leadership, cutting-edge AI/ML, and deep hardware validation expertise
                 </p>
             </div>
             
             <div class="skills-grid">
                 <div class="skill-category fade-in">
-                    <h3>🎯 Product & Strategy</h3>
+                    <h3>🎯 Product Strategy & Leadership</h3>
                     <div class="skill-list">
                         <span class="skill-item">Product Strategy & Roadmapping</span>
-                        <span class="skill-item">Cross-Functional Leadership</span>
-                        <span class="skill-item">Data-Driven Decision Making</span>
-                        <span class="skill-item">Program Management</span>
-                        <span class="skill-item">Risk Management</span>
-                        <span class="skill-item">Stakeholder Alignment</span>
+                        <span class="skill-item">Cross-Functional Team Leadership</span>
+                        <span class="skill-item">Stakeholder Alignment & Communication</span>
+                        <span class="skill-item">Program Management (Agile/Scrum)</span>
+                        <span class="skill-item">Risk Assessment & Mitigation</span>
+                        <span class="skill-item">Strategic Decision Making</span>
+                        <span class="skill-item">Executive Presentations</span>
+                        <span class="skill-item">Go-to-Market Strategy</span>
+                        <span class="skill-item">Product Lifecycle Management</span>
                     </div>
                 </div>
 
                 <div class="skill-category fade-in">
-                    <h3>🤖 AI/ML & Analytics</h3>
+                    <h3>🤖 AI/ML & Advanced Analytics</h3>
                     <div class="skill-list">
-                        <span class="skill-item">Machine Learning</span>
-                        <span class="skill-item">RAG & LLM Integration</span>
-                        <span class="skill-item">GPU-Accelerated ML</span>
+                        <span class="skill-item">Large Language Models (LLM)</span>
+                        <span class="skill-item">Retrieval-Augmented Generation (RAG)</span>
+                        <span class="skill-item">GPU-Accelerated Computing</span>
+                        <span class="skill-item">Machine Learning Pipelines</span>
                         <span class="skill-item">Predictive Analytics</span>
-                        <span class="skill-item">Optimization (MILP)</span>
-                        <span class="skill-item">Business Analytics</span>
+                        <span class="skill-item">Deep Learning</span>
+                        <span class="skill-item">Computer Vision</span>
+                        <span class="skill-item">Natural Language Processing</span>
+                        <span class="skill-item">Model Optimization</span>
+                        <span class="skill-item">MLOps & Deployment</span>
+                        <span class="skill-item">Feature Engineering</span>
+                        <span class="skill-item">A/B Testing</span>
                     </div>
                 </div>
 
                 <div class="skill-category fade-in">
-                    <h3>💻 Technical Excellence</h3>
+                    <h3>💻 Programming & Development</h3>
                     <div class="skill-list">
-                        <span class="skill-item">Python</span>
-                        <span class="skill-item">C/C++</span>
-                        <span class="skill-item">SQL & DBMS</span>
-                        <span class="skill-item">MATLAB</span>
-                        <span class="skill-item">Git</span>
-                        <span class="skill-item">YAML/HTML</span>
+                        <span class="skill-item mono">Python (NumPy, Pandas, Scikit-Learn)</span>
+                        <span class="skill-item mono">C/C++</span>
+                        <span class="skill-item mono">SQL & Database Management</span>
+                        <span class="skill-item mono">MATLAB</span>
+                        <span class="skill-item mono">JavaScript</span>
+                        <span class="skill-item mono">HTML5/CSS3</span>
+                        <span class="skill-item mono">YAML</span>
+                        <span class="skill-item mono">Git/GitHub</span>
+                        <span class="skill-item mono">Jupyter Notebooks</span>
+                        <span class="skill-item">REST APIs</span>
+                        <span class="skill-item">Version Control</span>
+                        <span class="skill-item">Code Review</span>
                     </div>
                 </div>
 
                 <div class="skill-category fade-in">
-                    <h3>🔧 Engineering & Validation</h3>
+                    <h3>🔧 Hardware & Systems Engineering</h3>
                     <div class="skill-list">
                         <span class="skill-item">SoC Design & Integration</span>
                         <span class="skill-item">Pre/Post-Silicon Validation</span>
-                        <span class="skill-item">Power Management</span>
-                        <span class="skill-item">System Debug</span>
+                        <span class="skill-item">Power Management Systems</span>
+                        <span class="skill-item">DMA Engines & Controllers</span>
+                        <span class="skill-item">Cryptography & Security</span>
+                        <span class="skill-item">Compression Pipelines</span>
+                        <span class="skill-item">PCIe & DDR Validation</span>
+                        <span class="skill-item">System Boot & Reset Flows</span>
+                        <span class="skill-item">Clock/Power Gating</span>
+                        <span class="skill-item">Fuse Automation</span>
+                        <span class="skill-item">Coverage Analysis</span>
+                        <span class="skill-item">Concurrency Testing</span>
+                        <span class="skill-item">System-Level Debug</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>🛠️ Debug Tools & Platforms</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Silicon/FPGA Platforms</span>
+                        <span class="skill-item">Simics Simulation</span>
+                        <span class="skill-item">ZeBu Emulation</span>
+                        <span class="skill-item">Veloce Platform</span>
+                        <span class="skill-item">Trace32 Debugger</span>
+                        <span class="skill-item">JTAG Interface</span>
+                        <span class="skill-item">Oscilloscopes</span>
+                        <span class="skill-item">Logic Analyzers</span>
+                        <span class="skill-item">UART Logging</span>
+                        <span class="skill-item">UEFI Shell</span>
+                        <span class="skill-item">BIOS Analysis</span>
+                        <span class="skill-item">WinDbg</span>
+                        <span class="skill-item">System Performance Analysis</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>📊 Business Analytics & Optimization</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Business Intelligence</span>
+                        <span class="skill-item">Data Visualization (Tableau, Power BI)</span>
+                        <span class="skill-item">Statistical Analysis</span>
+                        <span class="skill-item">Mathematical Optimization (Gurobi)</span>
+                        <span class="skill-item">Linear Programming (MILP)</span>
+                        <span class="skill-item">Excel Solver & Advanced Analytics</span>
+                        <span class="skill-item">Descriptive Analytics</span>
+                        <span class="skill-item">Predictive Analytics</span>
+                        <span class="skill-item">Prescriptive Analytics</span>
+                        <span class="skill-item">Database Design & Normalization</span>
+                        <span class="skill-item">ETL Processes</span>
+                        <span class="skill-item">KPI Development</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>🏗️ Process & Quality Management</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Lean Six Sigma (DMAIC)</span>
+                        <span class="skill-item">FMEA (Failure Mode Analysis)</span>
+                        <span class="skill-item">Root Cause Analysis (RCA)</span>
+                        <span class="skill-item">JIRA Project Management</span>
+                        <span class="skill-item">Agile/Scrum Methodologies</span>
+                        <span class="skill-item">Risk Tracking & Management</span>
                         <span class="skill-item">Test Automation</span>
                         <span class="skill-item">Quality Assurance</span>
+                        <span class="skill-item">Process Optimization</span>
+                        <span class="skill-item">Continuous Improvement</span>
+                        <span class="skill-item">Documentation & Standards</span>
                     </div>
                 </div>
 
                 <div class="skill-category fade-in">
-                    <h3>📈 Analytics & Tools</h3>
+                    <h3>🌟 Leadership & Communication</h3>
                     <div class="skill-list">
-                        <span class="skill-item">Tableau</span>
-                        <span class="skill-item">Power BI</span>
-                        <span class="skill-item">Gurobi</span>
-                        <span class="skill-item">Excel Solver</span>
-                        <span class="skill-item">Scikit-Learn</span>
-                        <span class="skill-item">cuDF</span>
-                    </div>
-                </div>
-
-                <div class="skill-category fade-in">
-                    <h3>👥 Leadership & Impact</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Team Leadership</span>
-                        <span class="skill-item">Technical Communication</span>
-                        <span class="skill-item">Mentoring</span>
-                        <span class="skill-item">Public Speaking</span>
+                        <span class="skill-item">Technical Leadership</span>
+                        <span class="skill-item">Cross-Cultural Team Management</span>
+                        <span class="skill-item">Mentoring & Coaching</span>
+                        <span class="skill-item">Public Speaking & Presentations</span>
+                        <span class="skill-item">Technical Writing</span>
+                        <span class="skill-item">Conference Presentations</span>
+                        <span class="skill-item">Research Publications</span>
                         <span class="skill-item">Community Building</span>
-                        <span class="skill-item">Social Impact</span>
+                        <span class="skill-item">Stakeholder Management</span>
+                        <span class="skill-item">Conflict Resolution</span>
+                        <span class="skill-item">Change Management</span>
+                        <span class="skill-item">Social Impact Initiatives</span>
                     </div>
+                </div>
+            </div>
+
+            <!-- Skills Statistics -->
+            <div class="skills-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-number">6+</div>
+                    <div class="stat-label">Years of Technical Leadership</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🚀</div>
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Technologies Mastered</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Industry Awards</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Conference Publications</div>
                 </div>
             </div>
         </div>
