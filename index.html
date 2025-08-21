@@ -1,227 +1,4 @@
-/* Skills Statistics */
-        .skills-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-            padding: 2rem 0;
-        }
-
-        .stat-card {
-            background: var(--bg-white);
-            padding: 2rem;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: var(--shadow-medium);
-            border: 1px solid var(--border);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-accent);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-heavy);
-        }
-
-        .stat-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-
-        .stat-card .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-card .stat-label {
-            color: var(--text-light);
-            font-weight: 500;
-        }        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Enhanced scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    
-                    // Add staggered animation delays for skill items
-                    if (entry.target.classList.contains('skill-category')) {
-                        const skillItems = entry.target.querySelectorAll('.skill-item');
-                        skillItems.forEach((item, index) => {
-                            setTimeout(() => {
-                                item.style.animation = `skillPop 0.5s ease-out forwards`;
-                                item.style.animationDelay = `${index * 0.1}s`;
-                            }, 200);
-                        });
-                    }
-                }
-            });
-        }, observerOptions);
-
-        // Add skill animation keyframes
-        const skillAnimation = `
-            @keyframes skillPop {
-                0% {
-                    transform: scale(0) rotate(180deg);
-                    opacity: 0;
-                }
-                50% {
-                    transform: scale(1.2) rotate(90deg);
-                    opacity: 0.8;
-                }
-                100% {
-                    transform: scale(1) rotate(0deg);
-                    opacity: 1;
-                }
-            }
-        `;
-        
-        const styleSheet = document.createElement('style');
-        styleSheet.innerText = skillAnimation;
-        document.head.appendChild(styleSheet);
-
-        // Observe all animated elements
-        document.querySelectorAll('.fade-in, .job-card, .project-card, .skill-category').forEach((el, index) => {
-            el.style.animationDelay = `${index * 0.15}s`;
-            observer.observe(el);
-        });
-
-        // Enhanced navigation scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            const scrolled = window.pageYOffset;
-            
-            if (scrolled > 100) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-            
-            // Parallax effect for hero
-            const hero = document.querySelector('.hero');
-            if (hero && scrolled < window.innerHeight) {
-                hero.style.transform = `translateY(${scrolled * 0.4}px)`;
-            }
-        });
-
-        // Dynamic typing effect with enhanced animations
-        const subtitle = document.querySelector('.subtitle');
-        const originalText = subtitle.textContent;
-        const alternatives = [
-            "Turning Complex Technologies into Impactful Products",
-            "Bridging Engineering Excellence with Strategic Vision",
-            "Driving AI Innovation from Silicon to Strategy",
-            "Leading Cross-Functional Teams to Deliver at Scale"
-        ];
-        
-        let currentIndex = 0;
-        
-        function typeWriter(text, element, speed = 50) {
-            element.textContent = '';
-            let i = 0;
-            const timer = setInterval(() => {
-                if (i < text.length) {
-                    element.textContent += text.charAt(i);
-                    i++;
-                } else {
-                    clearInterval(timer);
-                }
-            }, speed);
-        }
-
-        setInterval(() => {
-            currentIndex = (currentIndex + 1) % alternatives.length;
-            subtitle.style.opacity = '0';
-            subtitle.style.transform = 'translateY(-20px)';
-            
-            setTimeout(() => {
-                typeWriter(alternatives[currentIndex], subtitle, 80);
-                subtitle.style.opacity = '1';
-                subtitle.style.transform = 'translateY(0)';
-            }, 400);
-        }, 5000);
-
-        // Add floating particles effect
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.style.cssText = `
-                position: absolute;
-                width: 4px;
-                height: 4px;
-                background: rgba(255, 255, 255, 0.6);
-                border-radius: 50%;
-                pointer-events: none;
-                animation: float-particle 8s linear infinite;
-                left: ${Math.random() * 100}%;
-                top: 100%;
-                z-index: 0;
-            `;
-            
-            const floatAnimation = `
-                @keyframes float-particle {
-                    0% {
-                        transform: translateY(0) rotate(0deg);
-                        opacity: 0;
-                    }
-                    10% {
-                        opacity: 1;
-                    }
-                    90% {
-                        opacity: 1;
-                    }
-                    100% {
-                        transform: translateY(-100vh) rotate(360deg);
-                        opacity: 0;
-                    }
-                }
-            `;
-            
-            if (!document.querySelector('#<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -229,7 +6,7 @@
     <title>Neha Tiwari | Product Leader & AI Innovator</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -261,10 +38,6 @@
             color: var(--text-dark);
             scroll-behavior: smooth;
             font-weight: 400;
-        }
-
-        .mono {
-            font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', monospace;
         }
 
         /* Navigation */
@@ -327,22 +100,6 @@
             transform: translateY(-2px);
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-links a:hover::after {
-            width: 80%;
-        }
-
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -388,6 +145,7 @@
             font-size: 1.3rem;
             opacity: 0.9;
             margin-bottom: 2rem;
+            transition: all 0.4s ease;
         }
 
         .hero-text .description {
@@ -433,6 +191,7 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            font-family: inherit;
         }
 
         .btn::before {
@@ -507,15 +266,28 @@
             width: 150px;
             height: 150px;
             border-radius: 50%;
+            margin: 0 auto 1rem;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(214, 158, 46, 0.4);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-fallback {
+            width: 100%;
+            height: 100%;
             background: var(--gradient-accent);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem;
             font-size: 3rem;
             font-weight: 700;
-            animation: pulse 4s ease-in-out infinite;
-            box-shadow: 0 0 30px rgba(214, 158, 46, 0.4);
+            color: white;
         }
 
         @keyframes pulse {
@@ -621,28 +393,8 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-            animation: slideInLeft 0.8s ease-out forwards;
-            opacity: 0;
-            transform: translateX(-50px);
-        }
-
-        .job-card:nth-child(even) {
-            animation: slideInRight 0.8s ease-out forwards;
-            transform: translateX(50px);
-        }
-
-        @keyframes slideInLeft {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            opacity: 1;
+            transform: translateX(0);
         }
 
         .job-card:hover {
@@ -665,21 +417,6 @@
             height: 8px;
         }
 
-        .job-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .job-card:hover::after {
-            left: 100%;
-        }
-
         .job-header {
             display: flex;
             justify-content: space-between;
@@ -700,18 +437,6 @@
             margin-right: 1rem;
             font-size: 1.5rem;
             transition: all 0.3s ease;
-            animation: logoRotate 0.6s ease-out;
-        }
-
-        @keyframes logoRotate {
-            from {
-                transform: rotate(-180deg) scale(0);
-                opacity: 0;
-            }
-            to {
-                transform: rotate(0deg) scale(1);
-                opacity: 1;
-            }
         }
 
         .company-logo:hover {
@@ -792,47 +517,11 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-            animation: scaleIn 0.8s ease-out forwards;
-            opacity: 0;
-            transform: scale(0.9);
-        }
-
-        @keyframes scaleIn {
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
         }
 
         .project-card:hover {
-            transform: translateY(-10px) rotateY(5deg);
+            transform: translateY(-10px);
             box-shadow: var(--shadow-heavy);
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(from 0deg, transparent, rgba(26, 54, 93, 0.1), transparent);
-            animation: rotate 8s linear infinite;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
-        }
-
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
         }
 
         .project-icon {
@@ -846,24 +535,8 @@
             margin-bottom: 1.5rem;
             font-size: 1.8rem;
             transition: all 0.4s ease;
-            animation: bounceIn 1s ease-out;
             position: relative;
             z-index: 1;
-        }
-
-        @keyframes bounceIn {
-            0% {
-                transform: scale(0) rotate(180deg);
-                opacity: 0;
-            }
-            50% {
-                transform: scale(1.2) rotate(90deg);
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(1) rotate(0deg);
-                opacity: 1;
-            }
         }
 
         .project-card:hover .project-icon {
@@ -898,7 +571,6 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-bottom: 1rem;
         }
 
         .tech-tag {
@@ -908,22 +580,6 @@
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 500;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .project-link:hover {
-            text-decoration: underline;
         }
 
         /* Skills Section */
@@ -939,6 +595,12 @@
             border-radius: 16px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
         }
 
         .skill-category h3 {
@@ -946,6 +608,9 @@
             margin-bottom: 1rem;
             font-size: 1.2rem;
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .skill-list {
@@ -960,6 +625,63 @@
             padding: 0.5rem 1rem;
             border-radius: 25px;
             font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-item:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Skills Statistics */
+        .skills-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            padding: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .stat-card .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .stat-label {
+            color: var(--text-light);
             font-weight: 500;
         }
 
@@ -994,22 +716,6 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-        }
-
-        .contact-method::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(100%);
-            transition: transform 0.4s ease;
-        }
-
-        .contact-method:hover::before {
-            transform: translateY(0);
         }
 
         .contact-method:hover {
@@ -1072,18 +778,16 @@
             }
         }
 
-        /* Animations */
+        /* Fade in animation for sections */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            animation: fadeIn 1s ease forwards;
+            transition: all 0.8s ease-out;
         }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -1136,7 +840,10 @@
             
             <div class="hero-visual">
                 <div class="profile-card">
-                    <div class="avatar">NT</div>
+                    <div class="avatar">
+                        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAEOANsDEQACEQEEEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAABQYDBAcCCAH/xABGEAACAgEDAwMCAwUGAwUJAAACAwQFEQAGBwgSEyEJFCIxFVFhFiMykUIScYGRoRcXJCYmKjJSYnLBJic0JTNTdJOj8P/EABoBAQEBAQEBAQAAAAAAAAAAAAECAwQFBgf/xAA2EQACAgEDBAECBQMCBAcAAAAAAQIRIQMSMUEEBVFhcaETMoGRsRXB8BQi4SNCUsLR8RYzNGNygv/aAAwDAQACEQMRAD8A8+wD2+AH/9k=">
+                        <div class="avatar-fallback">NT</div>
+                    </div>
                     <h3>Neha Tiwari</h3>
                     <p>MS Business Analytics '25</p>
                     <p>Intel • Qualcomm</p>
@@ -1159,7 +866,10 @@
             <div class="about-content">
                 <div class="about-image">
                     <div class="about-card">
-                        <div class="avatar">NT</div>
+                        <div class="avatar">
+                            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAEOANsDEQACEQEEEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAABQYDBAcCCAH/xABGEAACAgEDAwMCAwUGAwUJAAACAwQFEQAGBwgSEyEVFCIxFVFhFiMyYUIScYGRoRcXJCYmKjJSYnLBJic0JTNTdJOj8P/EABoBAQEBAQEBAQAAAAAAAAAAAAECAwQFBgf/xAA2EQACAgEDBAECBQMCBAcAAAAAAQIRIQMSMUEEBVFhcaETMoGRsRXB8BQi4SNCUsLR8RYzNGNygv/aAAwDAQACEQMRAD8A8+wD2+AH/9k=" alt="Neha Tiwari">
+                            <div class="avatar-fallback">NT</div>
+                        </div>
                         <h3>Engineering → Product → AI</h3>
                         <p>My journey spans from silicon validation to AI product strategy</p>
                     </div>
@@ -1309,20 +1019,16 @@
                     <h3 class="project-title">AI Tutor Platform</h3>
                     <div class="project-award">1st Place - ASU × NVIDIA Hackathon 2025</div>
                     <p class="project-description">
-                        <strong>Hackathon Winner:</strong> GPU-accelerated, semi-Socratic RAG+LLM tutor for Data Science education. 
-                        Features flashcards, game mode, and point system with advanced knowledge retrieval and interactive learning mechanisms.
+                        GPU-accelerated, semi-Socratic RAG+LLM tutor for Data Science education. Features flashcards, game mode, 
+                        and point system with advanced knowledge retrieval and interactive learning mechanisms. Built using cutting-edge 
+                        AI technologies with focus on educational effectiveness and user engagement.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">RAG</span>
                         <span class="tech-tag">LLM Integration</span>
                         <span class="tech-tag">GPU Acceleration</span>
-                        <span class="tech-tag">Jupyter Notebook</span>
-                        <span class="tech-tag">Game Design</span>
                         <span class="tech-tag">Educational AI</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://www.youtube.com/watch?v=7OfkW2ry0wI" class="project-link" target="_blank">▶ Watch Demo</a>
-                        <a href="https://github.com/modelwith-neha/AI-Tutor" class="project-link" target="_blank">View Code →</a>
+                        <span class="tech-tag">Game Design</span>
                     </div>
                 </div>
 
@@ -1330,19 +1036,16 @@
                     <div class="project-icon">📊</div>
                     <h3 class="project-title">IBM Employee Attrition Predictor</h3>
                     <p class="project-description">
-                        <strong>94%+ Accuracy:</strong> Comprehensive ML pipeline with 12+ models built for workforce analytics. 
-                        Delivered actionable insights for HR retention strategies, featuring advanced feature engineering and model comparison.
+                        Comprehensive ML pipeline with 94%+ accuracy built for workforce analytics. Implemented 12+ machine learning 
+                        models with advanced feature engineering and model comparison. Delivered actionable insights for HR retention 
+                        strategies, helping organizations identify at-risk employees and implement targeted retention programs.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">Machine Learning</span>
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">Scikit-Learn</span>
-                        <span class="tech-tag">Jupyter Notebook</span>
-                        <span class="tech-tag">Predictive Analytics</span>
                         <span class="tech-tag">HR Analytics</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/modelwith-neha/IBM-attrition" class="project-link" target="_blank">View Analysis →</a>
+                        <span class="tech-tag">Predictive Analytics</span>
                     </div>
                 </div>
 
@@ -1350,19 +1053,16 @@
                     <div class="project-icon">🎵</div>
                     <h3 class="project-title">Spotify Songs Popularity Predictor</h3>
                     <p class="project-description">
-                        <strong>Music Analytics:</strong> Advanced machine learning model to predict song popularity using audio features, 
-                        artist metrics, and market trends. Comprehensive data analysis of streaming patterns and user preferences.
+                        Advanced machine learning model to predict song popularity using audio features, artist metrics, and market trends. 
+                        Comprehensive data analysis of streaming patterns and user preferences, providing insights into what makes songs 
+                        successful in the digital music landscape.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">Data Science</span>
                         <span class="tech-tag">Feature Engineering</span>
                         <span class="tech-tag">Regression Analysis</span>
-                        <span class="tech-tag">Jupyter Notebook</span>
                         <span class="tech-tag">Music Analytics</span>
                         <span class="tech-tag">Predictive Modeling</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/modelwith-neha/SpotifySongsPoupularity" class="project-link" target="_blank">Explore Data →</a>
                     </div>
                 </div>
 
@@ -1370,19 +1070,16 @@
                     <div class="project-icon">📈</div>
                     <h3 class="project-title">Customer Churn Analysis</h3>
                     <p class="project-description">
-                        <strong>Business Intelligence:</strong> End-to-end customer churn prediction system with advanced analytics. 
-                        Features customer segmentation, risk scoring, and actionable insights for customer retention strategies.
+                        End-to-end customer churn prediction system with advanced analytics. Features customer segmentation, risk scoring, 
+                        and actionable insights for customer retention strategies. Built comprehensive dashboards and automated reporting 
+                        systems to help businesses proactively manage customer relationships.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">Customer Analytics</span>
                         <span class="tech-tag">Classification Models</span>
                         <span class="tech-tag">Business Intelligence</span>
-                        <span class="tech-tag">Jupyter Notebook</span>
                         <span class="tech-tag">Risk Assessment</span>
                         <span class="tech-tag">Segmentation</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/modelwith-neha/CustomerChurn" class="project-link" target="_blank">View Analysis →</a>
                     </div>
                 </div>
 
@@ -1390,8 +1087,9 @@
                     <div class="project-icon">⚡</div>
                     <h3 class="project-title">AI Inference Optimizer</h3>
                     <p class="project-description">
-                        <strong>Performance Optimization:</strong> Sophisticated MILP optimization model balancing cost and latency for GPT workload routing 
-                        across GPUs and LLMs. Enables intelligent cost-latency-quality trade-off decisions for critical AI workloads.
+                        Sophisticated MILP optimization model balancing cost and latency for GPT workload routing across GPUs and LLMs. 
+                        Enables intelligent cost-latency-quality trade-off decisions for critical AI workloads, helping organizations 
+                        optimize their AI infrastructure spending while maintaining performance requirements.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">MILP</span>
@@ -1401,17 +1099,15 @@
                         <span class="tech-tag">Performance Modeling</span>
                         <span class="tech-tag">GPU Computing</span>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/modelwith-neha" class="project-link" target="_blank">View Portfolio →</a>
-                    </div>
                 </div>
 
                 <div class="project-card fade-in">
                     <div class="project-icon">🏛️</div>
                     <h3 class="project-title">Indian Parliament Digital Platform</h3>
                     <p class="project-description">
-                        <strong>Government Technology:</strong> Official Android applications for India's Parliament houses (Rajya Sabha & Lok Sabha) 
-                        during internship at National Informatics Centre. Provided nationwide digital access to legislative proceedings and parliamentary data.
+                        Official Android applications for India's Parliament houses (Rajya Sabha & Lok Sabha) developed during internship 
+                        at National Informatics Centre. Provided nationwide digital access to legislative proceedings and parliamentary data, 
+                        enabling millions of citizens to engage with democratic processes through mobile technology.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">Android Development</span>
@@ -1419,10 +1115,6 @@
                         <span class="tech-tag">Government Tech</span>
                         <span class="tech-tag">Public Service</span>
                         <span class="tech-tag">Digital Governance</span>
-                        <span class="tech-tag">NIC</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://www.linkedin.com/in/neha-tiwarii/" class="project-link" target="_blank">Learn More →</a>
                     </div>
                 </div>
             </div>
@@ -1476,15 +1168,13 @@
                 <div class="skill-category fade-in">
                     <h3>💻 Programming & Development</h3>
                     <div class="skill-list">
-                        <span class="skill-item mono">Python (NumPy, Pandas, Scikit-Learn)</span>
-                        <span class="skill-item mono">C/C++</span>
-                        <span class="skill-item mono">SQL & Database Management</span>
-                        <span class="skill-item mono">MATLAB</span>
-                        <span class="skill-item mono">JavaScript</span>
-                        <span class="skill-item mono">HTML5/CSS3</span>
-                        <span class="skill-item mono">YAML</span>
-                        <span class="skill-item mono">Git/GitHub</span>
-                        <span class="skill-item mono">Jupyter Notebooks</span>
+                        <span class="skill-item">Python (NumPy, Pandas, Scikit-Learn)</span>
+                        <span class="skill-item">C/C++</span>
+                        <span class="skill-item">SQL & Database Management</span>
+                        <span class="skill-item">MATLAB</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">HTML5/CSS3</span>
+                        <span class="skill-item">Git/GitHub</span>
                         <span class="skill-item">REST APIs</span>
                         <span class="skill-item">Version Control</span>
                         <span class="skill-item">Code Review</span>
@@ -1586,22 +1276,18 @@
             <!-- Skills Statistics -->
             <div class="skills-stats">
                 <div class="stat-card">
-                    <div class="stat-icon">🎯</div>
                     <div class="stat-number">6+</div>
                     <div class="stat-label">Years of Technical Leadership</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon">🚀</div>
                     <div class="stat-number">50+</div>
                     <div class="stat-label">Technologies Mastered</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon">🏆</div>
                     <div class="stat-number">5+</div>
                     <div class="stat-label">Industry Awards</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon">📚</div>
                     <div class="stat-number">4</div>
                     <div class="stat-label">Conference Publications</div>
                 </div>
@@ -1688,48 +1374,13 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    
-                    // Add staggered animation delays for skill items
-                    if (entry.target.classList.contains('skill-category')) {
-                        const skillItems = entry.target.querySelectorAll('.skill-item');
-                        skillItems.forEach((item, index) => {
-                            setTimeout(() => {
-                                item.style.animation = `skillPop 0.5s ease-out forwards`;
-                                item.style.animationDelay = `${index * 0.1}s`;
-                            }, 200);
-                        });
-                    }
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
 
-        // Add skill animation keyframes
-        const skillAnimation = `
-            @keyframes skillPop {
-                0% {
-                    transform: scale(0) rotate(180deg);
-                    opacity: 0;
-                }
-                50% {
-                    transform: scale(1.2) rotate(90deg);
-                    opacity: 0.8;
-                }
-                100% {
-                    transform: scale(1) rotate(0deg);
-                    opacity: 1;
-                }
-            }
-        `;
-        
-        const styleSheet = document.createElement('style');
-        styleSheet.innerText = skillAnimation;
-        document.head.appendChild(styleSheet);
-
         // Observe all animated elements
-        document.querySelectorAll('.fade-in, .job-card, .project-card, .skill-category').forEach((el, index) => {
-            el.style.animationDelay = `${index * 0.15}s`;
+        document.querySelectorAll('.fade-in').forEach((el) => {
             observer.observe(el);
         });
 
@@ -1751,7 +1402,7 @@
             }
         });
 
-        // Dynamic typing effect with enhanced animations
+        // Dynamic typing effect
         const subtitle = document.querySelector('.subtitle');
         const alternatives = [
             "Turning Complex Technologies into Impactful Products",
@@ -1787,143 +1438,6 @@
             }, 400);
         }, 5000);
 
-        // Add floating particles effect for hero section
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.style.cssText = `
-                position: absolute;
-                width: 4px;
-                height: 4px;
-                background: rgba(255, 255, 255, 0.6);
-                border-radius: 50%;
-                pointer-events: none;
-                animation: float-particle 12s linear infinite;
-                left: ${Math.random() * 100}%;
-                top: 100%;
-                z-index: 0;
-            `;
-            
-            document.querySelector('.hero').appendChild(particle);
-            
-            setTimeout(() => {
-                particle.remove();
-            }, 12000);
-        }
-
-        // Create particles periodically
-        setInterval(createParticle, 800);
-
-        // Add CSS for particle animation
-        const particleAnimation = `
-            @keyframes float-particle {
-                0% {
-                    transform: translateY(0) rotate(0deg) scale(0);
-                    opacity: 0;
-                }
-                10% {
-                    opacity: 1;
-                    transform: scale(1);
-                }
-                90% {
-                    opacity: 1;
-                }
-                100% {
-                    transform: translateY(-100vh) rotate(360deg) scale(0);
-                    opacity: 0;
-                }
-            }
-        `;
-        
-        const particleStyleSheet = document.createElement('style');
-        particleStyleSheet.innerText = particleAnimation;
-        document.head.appendChild(particleStyleSheet);
-
-        // Add mouse movement parallax effect
-        document.addEventListener('mousemove', (e) => {
-            const mouseX = e.clientX / window.innerWidth;
-            const mouseY = e.clientY / window.innerHeight;
-            
-            const profileCard = document.querySelector('.profile-card');
-            if (profileCard) {
-                const moveX = (mouseX - 0.5) * 20;
-                const moveY = (mouseY - 0.5) * 20;
-                profileCard.style.transform = `translate(${moveX}px, ${moveY}px) rotateY(${moveX * 0.5}deg) rotateX(${-moveY * 0.5}deg)`;
-            }
-        });
-
-        // Add counter animation for stats
-        function animateCounter(element, target, duration = 2000) {
-            let start = 0;
-            const increment = target / (duration / 16);
-            
-            const timer = setInterval(() => {
-                start += increment;
-                if (start >= target) {
-                    element.textContent = target + (element.textContent.includes('+') ? '+' : '');
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(start) + (element.textContent.includes('+') ? '+' : '');
-                }
-            }, 16);
-        }
-
-        // Trigger counter animations when stats come into view
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const statNumbers = entry.target.querySelectorAll('.stat-number');
-                    statNumbers.forEach(stat => {
-                        const text = stat.textContent;
-                        let target = parseInt(text.replace(/\D/g, ''));
-                        
-                        if (text.includes('B+')) target = target;
-                        else if (text.includes('M+')) target = target;
-                        
-                        animateCounter(stat, target);
-                    });
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        });
-
-        const heroStats = document.querySelector('.hero-stats');
-        if (heroStats) {
-            statsObserver.observe(heroStats);
-        }
-
-        // Add section reveal animations
-        const sections = document.querySelectorAll('section');
-        sections.forEach((section, index) => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(50px)';
-            section.style.transition = 'all 0.8s ease-out';
-            section.style.animationDelay = `${index * 0.2}s`;
-        });
-
-        const sectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        sections.forEach(section => {
-            sectionObserver.observe(section);
-        });
-
-        // Add hover sound effect (visual feedback)
-        document.querySelectorAll('.job-card, .project-card, .skill-category').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.filter = 'brightness(1.05)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.filter = 'brightness(1)';
-            });
-        });
-
         // Add loading animation
         window.addEventListener('load', () => {
             document.body.style.opacity = '0';
@@ -1932,6 +1446,17 @@
             setTimeout(() => {
                 document.body.style.opacity = '1';
             }, 100);
+        });
+
+        // Handle image loading errors with fallback
+        document.querySelectorAll('.avatar img').forEach(img => {
+            img.onerror = function() {
+                this.style.display = 'none';
+                this.nextElementSibling.style.display = 'flex';
+            };
+            img.onload = function() {
+                this.nextElementSibling.style.display = 'none';
+            };
         });
     </script>
 </body>
