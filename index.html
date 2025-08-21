@@ -4,178 +4,186 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Neha Tiwari | Engineer Meets Analytics</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      color: #333;
-      background: #f5f5f5;
-      scroll-behavior: smooth;
+      margin:0; padding:0;
+      line-height:1.6;
+      background:#f8f9fa;
+      color:#333;
+      scroll-behavior:smooth;
+      transition: background 0.3s, color 0.3s;
     }
-    header {
-      background: linear-gradient(to right, #203864, #4e74a6);
-      color: white;
-      padding: 2rem;
-      text-align: center;
-      animation: fadeSlideIn 1.5s ease-in-out;
-    }
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.3rem;
-    }
-    header h3 {
-      font-weight: normal;
-      font-size: 1.2rem;
-      margin-top: 0;
-      color: #e0e0e0;
-      animation: pulse 3s infinite;
-    }
-    @keyframes pulse {
-      0% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.7; transform: scale(1.02); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-    @keyframes fadeSlideIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes slideUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-    section {
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 1rem 2rem;
-      background: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      border-radius: 8px;
-      animation: slideUp 1s ease forwards;
-      opacity: 0;
-    }
-    section:nth-of-type(1) { animation-delay: 0.3s; }
-    section:nth-of-type(2) { animation-delay: 0.6s; }
-    section:nth-of-type(3) { animation-delay: 0.9s; }
-    section:nth-of-type(4) { animation-delay: 1.2s; }
-    section:nth-of-type(5) { animation-delay: 1.5s; }
+    header { background:linear-gradient(to right,#203864,#4e74a6); color:white; padding:3rem 2rem; text-align:center; }
+    header h1 { font-size:3rem; margin:0; }
+    header h3 { font-weight:400; font-size:1.2rem; margin-top:0.5rem; color:#f0f0f0; }
 
-    h2 {
-      color: #203864;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 0.3rem;
-    }
-    ul li {
-      margin-bottom: 0.5rem;
-    }
-    .contact-links a {
-      margin-right: 1rem;
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    footer {
-      background: #203864;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      animation: fadeSlideIn 2s ease-in-out;
-    }
+    nav { background:#203864; display:flex; justify-content:center; gap:1.5rem; padding:0.8rem; position:sticky; top:0; z-index:1000; }
+    nav a { color:white; text-decoration:none; font-weight:600; }
+    nav a:hover { color:#ffd54f; }
+    #toggle-btn { cursor:pointer; font-size:1.2rem; color:white; background:none; border:none; }
+
+    section { max-width:1000px; margin:2rem auto; background:white; padding:2rem; border-radius:10px;
+      box-shadow:0 0 12px rgba(0,0,0,0.1); transition: background 0.3s, color 0.3s; }
+    h2 { color:#203864; border-bottom:2px solid #ddd; padding-bottom:0.3rem; margin-top:0; }
+    .timeline { display:flex; flex-wrap:wrap; gap:1.5rem; margin-top:1rem; }
+    .card { flex:1 1 45%; background:#f1f7fd; padding:1rem; border-left:4px solid #4e74a6; border-radius:6px; transition: background 0.3s; }
+    .skills { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1rem; margin-top:1rem; }
+    .skill-card { background:#e3f2fd; padding:0.8rem; text-align:center; border-radius:8px; font-weight:600; transition: background 0.3s; }
+    ul { padding-left:1.2rem; }
+    ul li { margin-bottom:0.6rem; }
+    footer { background:#203864; color:white; text-align:center; padding:1.5rem; margin-top:2rem; }
+    footer a { color:#ffd54f; text-decoration:none; }
+
+    /* 🌙 Dark Mode */
+    body.dark { background:#121212; color:#e0e0e0; }
+    body.dark section { background:#1e1e1e; color:#e0e0e0; }
+    body.dark h2 { color:#90caf9; border-bottom:1px solid #555; }
+    body.dark .card { background:#2a2a2a; border-left-color:#90caf9; }
+    body.dark .skill-card { background:#2a3b4c; }
+    body.dark nav { background:#111827; }
+    body.dark header { background:linear-gradient(to right,#0f172a,#1e293b); }
   </style>
 </head>
 <body>
+
+  <!-- Hero -->
   <header>
     <h1>Neha Tiwari</h1>
-    <p style="font-size: 1rem; margin-top: -10px; color: #f0f0f0;">
-      Open to AI-focused validation, technical PM, or analytics strategy roles in tech-forward teams — blending Computer Science and Business insight.
+    <h3>Engineer • Analyst • Product Thinker | Blending Technology & Business Insight</h3>
+    <p>📧 <a href="mailto:ntiwar12@asu.edu" style="color:#ffd54f;">ntiwar12@asu.edu</a> | 📞 623-268-3814</p>
+    <p>
+      <a href="https://www.linkedin.com/in/neha-tiwarii/" target="_blank" style="color:#ffd54f; margin-right:1rem;">LinkedIn</a>
+      <a href="https://github.com/modelwith-neha" target="_blank" style="color:#ffd54f;">GitHub</a>
     </p>
-    <h3>Engineer. Analyst. Storyteller with a soft spot for debugs and dashboards.</h3>
-    <div class="contact-links">
-      <a href="mailto:ntiwar12@asu.edu">Email</a>
-      <a href="https://www.linkedin.com/in/neha-tiwarii/" target="_blank">LinkedIn</a>
-      <a href="https://github.com/modelwith-neha" target="_blank">GitHub</a>
-    </div>
   </header>
 
-  <section>
+  <!-- Navbar -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#publications">Publications</a>
+    <a href="#leadership">Leadership</a>
+    <a href="#contact">Contact</a>
+    <button id="toggle-btn">🌙</button>
+  </nav>
+
+  <!-- About -->
+  <section id="about">
     <h2>About Me</h2>
     <p>
-      👋 I’m Neha — a validation engineer turned data enthusiast, navigating the world of machine learning and business analytics from the labs of Intel and Qualcomm to the classrooms of Arizona State University. With 6+ years of hands-on engineering, I now dive deep into data to uncover insights and solve real-world problems using tech, models, and every bit of curiosity.
+      Product-focused engineering leader with 6+ years at Intel & Qualcomm turning complex technologies into impactful products. 
+      Recognized with multiple awards (Divisional Recognition, QPB+, Superstar) and published research. 
+      Currently pursuing an MS in Business Analytics (ASU, Dec 2025) to deepen expertise in AI/ML, product strategy, and data-driven decision making.
     </p>
   </section>
 
-  <section>
-    <h2>Projects</h2>
-    <ul>
-      <li><strong>AI Tutor (1st Place @ ASU × NVIDIA Hackathon):</strong>
-        <div style="margin-top: 0.5rem;">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/7OfkW2ry0wI" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <a href="https://medium.com/@ntiwar12/from-unknown-to-unstoppable-how-we-won-the-nvidia-x-asu-hackathon-b4ffa9566671" target="_blank">Read the full story on Medium</a>
-      </li>
-      <li><strong>GPT Workload Optimization:</strong> Optimized cost and latency for AI workloads using MILP</li>
-      <li><strong>Attrition Prediction:</strong> Explored employee churn using 10+ ML models and IBM HR dataset</li>
-      <li><strong>Proposal Process Redesign:</strong> Cut down DPMO by 60% using Six Sigma and RPA techniques</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Publications</h2>
-    <ul>
-      <li><a href="https://ieeexplore.ieee.org/document/8929610">Compression with Authenticated Encryption</a></li>
-      <li><a href="https://www.sciencedirect.com/science/article/pii/S2212683X18301142">Brain-Computer Interface Review</a></li>
-      <li><a href="https://www.rajgurucollege.com/Innovation-Projects">Innovation Study on Gadget Addiction</a></li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>🚀 Journey So Far</h2>
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; margin: 2rem 0;">
-      <div style="flex: 1 1 30%; background: #e3f2fd; padding: 1rem; border-left: 4px solid #2196f3; border-radius: 4px;">
-        <strong>2013–2017</strong><br />
-        B.Tech Computer Science – <a href="https://www.rajgurucollege.com/" target="_blank">DU – Rajguru College</a>
-      </div>
-      <div style="flex: 1 1 30%; background: #e3f2fd; padding: 1rem; border-left: 4px solid #2196f3; border-radius: 4px;">
-        <strong>2017–2019</strong><br />
-        M.Tech Computer Science – <a href="https://www.nitgoa.ac.in/" target="_blank">NIT Goa</a> (GATE AIR 2027)
-      </div>
-      <div style="flex: 1 1 30%; background: #e8f5e9; padding: 1rem; border-left: 4px solid #4caf50; border-radius: 4px;">
-        <strong>2018–2019</strong><br />
-        Internship – <a href="https://www.intel.com/" target="_blank">Intel</a>
-      </div>
-      <div style="flex: 1 1 30%; background: #e8f5e9; padding: 1rem; border-left: 4px solid #4caf50; border-radius: 4px;">
-        <strong>2019–2021</strong><br />
-        System Validation Engineer – <a href="https://www.intel.com/" target="_blank">Intel (DCG)</a>
-      </div>
-      <div style="flex: 1 1 30%; background: #e8f5e9; padding: 1rem; border-left: 4px solid #4caf50; border-radius: 4px;">
-        <strong>2021–2022</strong><br />
-        Senior Validation Engineer – <a href="https://www.qualcomm.com/" target="_blank">Qualcomm (ConVex)</a>
-      </div>
-      <div style="flex: 1 1 30%; background: #e8f5e9; padding: 1rem; border-left: 4px solid #4caf50; border-radius: 4px;">
-        <strong>2022–2024</strong><br />
-        System Software Validation Engineer – <a href="https://www.intel.com/" target="_blank">Intel (CCG)</a>
-      </div>
-      <div style="flex: 1 1 30%; background: #e3f2fd; padding: 1rem; border-left: 4px solid #2196f3; border-radius: 4px;">
-        <strong>2024–2025</strong><br />
-        MS Business Analytics – <a href="https://wpcarey.asu.edu/" target="_blank">Arizona State University</a>
-      </div>
+  <!-- Experience -->
+  <section id="experience">
+    <h2>Professional Experience</h2>
+    <div class="timeline">
+      <div class="card"><strong>Intel | System Software Engineer (2022–2024)</strong><br/>Led AI PCs’ power-management strategy improving battery life by 15% across flagship platforms. Co-authored AI-PC stability research (DTTC’24).</div>
+      <div class="card"><strong>Qualcomm | Senior Engineer (2021–2022)</strong><br/>Directed validation strategy shaping SoCs for 1B+ users. Designed system-level debug flow improving coverage by 20%. Featured at Qualcomm Summit 2021.</div>
+      <div class="card"><strong>Intel | Product Validation Engineer (2018–2021)</strong><br/>Led validation for 3 SoC generations across concurrency, compression & security. Automated fuse workflows reducing post-silicon time by 20%.</div>
     </div>
   </section>
 
-  <section>
-    <h2>📬 Contact</h2>
-    <p>If you’d like to connect for collaboration, mentorship, or conversation — feel free to <a href="mailto:ntiwar12@asu.edu">reach out</a>. I'm always open to new ideas and impact-driven work.</p>
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Key Projects</h2>
+    <ul>
+      <li><strong>AI Tutor (ASU × NVIDIA Hackathon, 1st Place):</strong> GPU-accelerated RAG+LLM tutor. <a href="https://www.youtube.com/watch?v=7OfkW2ry0wI" target="_blank">▶ Watch Demo</a></li>
+      <li><strong>AI Inference Optimizer:</strong> ML optimization model balancing cost & latency for GPT workload routing.</li>
+      <li><strong>Employee Attrition Prediction:</strong> 12 ML models with >94% accuracy on IBM dataset.</li>
+      <li><strong>Proposal Process Redesign:</strong> Lean Six Sigma + RPA cut DPMO by 60% improving sigma from 2.08 to 3.5.</li>
+    </ul>
   </section>
 
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills & Tools</h2>
+    <div class="skills">
+      <div class="skill-card">Product Strategy</div>
+      <div class="skill-card">AI/ML & LLMs</div>
+      <div class="skill-card">GPU Acceleration</div>
+      <div class="skill-card">Power BI / Tableau</div>
+      <div class="skill-card">Python, SQL, C++</div>
+      <div class="skill-card">System Validation</div>
+      <div class="skill-card">Lean Six Sigma</div>
+      <div class="skill-card">Cross-Functional Leadership</div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <h2>Education</h2>
+    <ul>
+      <li><strong>Arizona State University</strong> – MS Business Analytics (Dec 2025)</li>
+      <li><strong>NIT Goa</strong> – M.Tech, Computer Science (2019)</li>
+      <li><strong>DU – Rajguru College</strong> – B.Tech, Computer Science (2017)</li>
+    </ul>
+  </section>
+
+  <!-- Publications -->
+  <section id="publications">
+    <h2>Research Publications</h2>
+    <ul>
+      <li><a href="https://ieeexplore.ieee.org/document/8929610" target="_blank">Compression with Authenticated Encryption (IEEE)</a></li>
+      <li><a href="https://www.sciencedirect.com/science/article/pii/S2212683X18301142" target="_blank">Brain-Computer Interface Review</a></li>
+      <li><a href="https://www.rajgurucollege.com/Innovation-Projects" target="_blank">Innovation Study on Gadget Addiction</a></li>
+    </ul>
+  </section>
+
+  <!-- Leadership -->
+  <section id="leadership">
+    <h2>Leadership & Community</h2>
+    <ul>
+      <li>Vice President – Young Association’s Teaching NGO, coordinated 200+ volunteers.</li>
+      <li>Founding Member – Let’s Educate Children In Need NGO, created 4 service segments.</li>
+      <li>Teach India Coordinator – Times of India certified trainer, 8/10 students placed.</li>
+      <li>Founder – Literary & Dramatics Society, DU, organizing cultural fests for 100+ students.</li>
+    </ul>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>📬 Contact</h2>
+    <p>If you’d like to connect for collaboration, mentorship, or conversation — feel free to reach out.</p>
+    <p>📧 <a href="mailto:ntiwar12@asu.edu">ntiwar12@asu.edu</a> | 📞 623-268-3814</p>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Neha Tiwari. Powered by initiative, precision, and purpose.</p>
-    <p>
-      <a href="https://www.linkedin.com/in/neha-tiwarii/" target="_blank" style="color: white; text-decoration: underline;">
-        Connect with me on LinkedIn
-      </a>
-    </p>
+    <p>&copy; 2025 Neha Tiwari | Built with passion, precision, and purpose.</p>
+    <p><a href="https://www.linkedin.com/in/neha-tiwarii/" target="_blank">Connect on LinkedIn</a></p>
   </footer>
+
+  <!-- Dark Mode Script -->
+  <script>
+    const toggleBtn = document.getElementById("toggle-btn");
+    const body = document.body;
+
+    // Load preference
+    if(localStorage.getItem("theme") === "dark") {
+      body.classList.add("dark");
+      toggleBtn.textContent = "☀️";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      body.classList.toggle("dark");
+      if(body.classList.contains("dark")) {
+        toggleBtn.textContent = "☀️";
+        localStorage.setItem("theme","dark");
+      } else {
+        toggleBtn.textContent = "🌙";
+        localStorage.setItem("theme","light");
+      }
+    });
+  </script>
+
 </body>
 </html>
