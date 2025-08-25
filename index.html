@@ -1,299 +1,1308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neha Tiwari | Semiconductor & AI Expert | Innovation & Impact</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Fix for Let's Connect visibility */
-    #contact .section-title {
-      color: #fff !important;
-      text-shadow: 0px 1px 3px rgba(0,0,0,0.6);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neha Tiwari | Product Leader & AI Innovator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0066ff;
+            --secondary-color: #1a365d;
+            --accent-color: #00d4ff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+            --background: #ffffff;
+            --surface: #f8fafc;
+            --border: #e2e8f0;
+            --gradient-primary: linear-gradient(135deg, #0066ff 0%, #00d4ff 100%);
+            --gradient-secondary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--background);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(0,102,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            animation: slideInUp 1s ease 0.2s forwards;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            min-height: 2rem;
+            opacity: 0;
+            animation: slideInUp 1s ease 0.4s forwards;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 90%;
+            opacity: 0;
+            animation: slideInUp 1s ease 0.6s forwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: slideInUp 1s ease 0.8s forwards;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            position: relative;
+            opacity: 0;
+            animation: slideInRight 1s ease 0.4s forwards;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: var(--gradient-primary);
+            border-radius: 30px;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Floating elements animation */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            background: var(--gradient-primary);
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            background: var(--gradient-secondary);
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            background: var(--gradient-accent);
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--surface);
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Experience Section */
+        .job-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .job-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .job-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .job-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .job-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .job-company {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-dates {
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .job-description {
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--surface);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .project-award {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 102, 255, 0.1);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Skills Section */
+        .skills-categories {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            text-align: center;
+            position: relative;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact .section-title::after {
+            background: white;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-method:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .job-cards,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-container {
+                padding: 1rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading animation */
+        .loading-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--gradient-primary);
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+    </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
-    <div class="nav-container">
-      <div class="logo">Neha Tiwari</div>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#leadership">Leadership</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+    <div class="loading-bar"></div>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Neha Tiwari</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#leadership">Leadership</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-text">
-        <h1>Product Leader & AI Innovator</h1>
-        <div class="subtitle">Turning Complex Technologies into Impactful Products</div>
-        <div class="description">
-          Engineering leader with 6+ years at Intel & Qualcomm, driving SoC lifecycles and AI innovation. 
-          Currently pursuing MS in Business Analytics, bridging technical excellence with strategic product vision.
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
         </div>
-        <div class="cta-buttons">
-          <a href="#experience" class="btn btn-primary">View My Work</a>
-          <a href="#contact" class="btn btn-outline">Let's Connect</a>
-        </div>
-      </div>
-      <div class="hero-image">
-        <img src="assets/neha.jpg" alt="Neha Tiwari" />
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="about">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">About Me</h2>
-      </div>
-      <p>
-        I am a Semiconductor and AI professional with proven expertise in validation, debugging, and product innovation.
-        With 6+ years at Intel & Qualcomm, I specialize in leading complex SoC programs, cross-functional collaboration,
-        and AI-driven solutions. Currently pursuing my MS in Business Analytics at ASU, I am expanding my expertise 
-        in machine learning, data-driven decision-making, and business strategy.
-      </p>
-    </div>
-  </section>
-
-  <!-- Experience Section -->
-  <section id="experience" class="experience">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Experience</h2>
-      </div>
-      <div class="job-cards">
-        <div class="job-card fade-in">
-          <h3 class="job-title">Validation Engineer</h3>
-          <p class="job-company">Intel Corporation</p>
-          <p class="job-dates">2018 – 2022</p>
-          <p class="job-description">
-            Led power management validation across multiple SoC generations, optimizing system efficiency
-            and contributing to product launches used globally. Specialized in debugging and concurrency testing.
-          </p>
-        </div>
-        <div class="job-card fade-in">
-          <h3 class="job-title">Validation Engineer</h3>
-          <p class="job-company">Qualcomm</p>
-          <p class="job-dates">2022 – 2023</p>
-          <p class="job-description">
-            Drove validation of connectivity subsystems, collaborating across hardware/software teams to ensure
-            robust performance. Recognized with divisional awards for technical innovation and execution.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="projects">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Featured Projects</h2>
-        <p class="section-subtitle">
-          Innovative solutions spanning AI/ML, optimization, and product development
-        </p>
-      </div>
-
-      <div class="projects-grid">
-        <div class="project-card fade-in">
-          <div class="project-icon">🏆</div>
-          <h3 class="project-title">AI Tutor Platform</h3>
-          <div class="project-award">1st Place - ASU × NVIDIA Hackathon 2025</div>
-          <p class="project-description">
-            GPU-accelerated, semi-Socratic RAG+LLM tutor for Data Science education. Features flashcards, game mode, 
-            and point system with advanced knowledge retrieval and interactive learning mechanisms. Built using cutting-edge 
-            AI technologies with focus on educational effectiveness and user engagement.
-          </p>
-          <p>
-            <a href="https://www.youtube.com/watch?v=7OfkW2ry0wI&list=WL&index=4&t=13s" target="_blank" style="color:#1a365d;font-weight:600;">
-              ▶ Watch Demo on YouTube
-            </a>
-          </p>
-          <div class="project-tech">
-            <span class="tech-tag">RAG</span>
-            <span class="tech-tag">LLM Integration</span>
-            <span class="tech-tag">GPU Acceleration</span>
-            <span class="tech-tag">Educational AI</span>
-            <span class="tech-tag">Game Design</span>
-          </div>
-        </div>
-        <!-- other projects unchanged -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Publications Section -->
-  <section id="publications" class="projects">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Research Publications</h2>
-      </div>
-      <div class="projects-grid">
-        <div class="project-card fade-in">
-          <h3 class="project-title">Compression with Authenticated Encryption</h3>
-          <p class="project-description">Enhancing security on data-centric products.<br><em>IEEE Conference Publication</em></p>
-        </div>
-        <div class="project-card fade-in">
-          <h3 class="project-title">Brain Computer Interface</h3>
-          <p class="project-description">Review article: A comprehensive survey covering methods, applications, and challenges.</p>
-        </div>
-        <div class="project-card fade-in">
-          <h3 class="project-title">Innovation Study: Gadget Addiction</h3>
-          <p class="project-description">
-            Research project on digital behavior.<br>
-            <a href="https://www.rajgurucollege.com/Innovation-Projects" target="_blank">View Project</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Leadership Section -->
-  <section id="leadership" class="projects">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Leadership & Engagement</h2>
-      </div>
-      <div class="projects-grid">
-        <div class="project-card fade-in">
-          <h3 class="project-title">Teaching & Mentorship</h3>
-          <p class="project-description">
-            Teaching Assistant (NIT Goa, 2017–18) <br>
-            Certified Teacher Coordinator, Teach India (2015) <br>
-            Vice President, Young Association’s Teaching Group NGO (2015–16)
-          </p>
-        </div>
-        <div class="project-card fade-in">
-          <h3 class="project-title">Leadership Roles</h3>
-          <p class="project-description">
-            General Secretary, CS Dept (2016–17) <br>
-            Founder & Core Member, Literary & Dramatics Society (2014–17) <br>
-            Software Engineer Intern, NIC Delhi (2016)
-          </p>
-        </div>
-        <div class="project-card fade-in">
-          <h3 class="project-title">Achievements</h3>
-          <p class="project-description">
-            2nd Place, National Academic Youth Congress (2015)<br>
-            Content Developer, Quizential (2014)
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="skills">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Skills</h2>
-      </div>
-      <div class="skills-grid">
-        <span class="skill-tag">SoC Validation</span>
-        <span class="skill-tag">Debugging</span>
-        <span class="skill-tag">Power Management</span>
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">C++</span>
-        <span class="skill-tag">AI/ML</span>
-        <span class="skill-tag">Optimization Modeling</span>
-        <span class="skill-tag">Business Analytics</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <div class="contact-content">
-        <h2 class="section-title">Let's Connect</h2>
-        <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">
-          Ready to discuss product strategy, AI innovation, or community impact? I'd love to hear from you.
-        </p>
-        <div class="contact-methods">
-          <div class="contact-method">
-            <div class="contact-icon">📧</div>
-            <div>
-              <a href="mailto:ntiwar12@asu.edu" style="color:white;">ntiwar12@asu.edu</a> | 
-              <a href="mailto:tiwari.ne09@gmail.com" style="color:white;">tiwari.ne09@gmail.com</a>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Product Leader & AI Innovator</h1>
+                <div class="subtitle">Turning Complex Technologies into Impactful Products</div>
+                <div class="description">
+                    Engineering leader with 6+ years at Intel & Qualcomm, driving SoC lifecycles and AI innovation. 
+                    Currently pursuing MS in Business Analytics, bridging technical excellence with strategic product vision.
+                </div>
+                <div class="cta-buttons">
+                    <a href="#experience" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Let's Connect</a>
+                </div>
             </div>
-          </div>
-          <a href="https://www.linkedin.com/in/neha-tiwarii/" class="contact-method" target="_blank">
-            <div class="contact-icon">💼</div>
-            <div>LinkedIn</div>
-          </a>
-          <a href="https://github.com/modelwith-neha" class="contact-method" target="_blank">
-            <div class="contact-icon">💻</div>
-            <div>GitHub</div>
-          </a>
-          <a href="tel:623-268-3814" class="contact-method">
-            <div class="contact-icon">📱</div>
-            <div>(623) 268-3814</div>
-          </a>
+            <div class="hero-image">
+                <img src="assets/neha.jpg" alt="Neha Tiwari" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDQwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiIGZpbGw9IiNGOEZBRkMiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNjAiIHI9IjYwIiBmaWxsPSIjRTJFOEYwIi8+PHBhdGggZD0iTTEyMCAyODBIMjgwQzI4MCAyODAuMSAyNzkuOSAyNTkuMiAyNzkgMjQwQzI3Ni4yIDIwNi41IDI0MS4zIDE4MCAyMDAgMTgwQzE1OC43IDE4MCAxMjMuOCAyMDYuNSAxMjEgMjQwQzEyMC4xIDI1OS4yIDEyMCAyODAuMSAxMjAgMjgwWiIgZmlsbD0iI0UyRThGMCIvPjwvc3ZnPg=='" />
+            </div>
         </div>
-        <div style="margin-top: 2rem;">
-          <p style="opacity: 0.8; margin-bottom: 1rem;">Currently based in Tempe, Arizona</p>
-          <p style="opacity: 0.8;">MS Business Analytics graduate student at Arizona State University (Dec 2025)</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title scroll-reveal">About Me</h2>
+            </div>
+            <p class="scroll-reveal">
+                Silicon validation engineer with 6+ years at Intel and Qualcomm, impacting 50M+ AI PC and 1B+ mobile users. 
+                Delivered zero customer escapes while accelerating time-to-market by 2 months through innovative validation strategies. 
+                Triple award winner with published research bridging validation excellence and product impact. Currently pursuing 
+                MS Business Analytics to combine silicon expertise with AI/ML optimization and strategic product vision.
+            </p>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Neha Tiwari. Crafted with passion for innovation and impact.</p>
-    </div>
-  </footer>
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title scroll-reveal">Experience</h2>
+            </div>
+            <div class="job-cards">
+                <div class="job-card scroll-reveal">
+                    <h3 class="job-title">System Software Engineer</h3>
+                    <p class="job-company">Intel Corporation</p>
+                    <p class="job-dates">Mar 2022 – Nov 2024</p>
+                    <p class="job-description">
+                        Led AI PCs power-management validation strategy, delivering 15% battery life improvement with zero customer escapes across 5 SKUs. 
+                        Prevented performance degradation impacting 50M+ users by coordinating BIOS, OS, thermal, and power teams for AI workload optimization. 
+                        Co-authored DTTC 2024 research on AI-PC stability framework.
+                    </p>
+                </div>
+                <div class="job-card scroll-reveal">
+                    <h3 class="job-title">Senior Validation Engineer</h3>
+                    <p class="job-company">Qualcomm</p>
+                    <p class="job-dates">May 2021 – Feb 2022</p>
+                    <p class="job-description">
+                        Directed validation strategy for value-tier mobile SoCs serving 1B+ users, balancing performance with cost optimization. 
+                        Engineered breakthrough system-level debug flow reducing validation risk by 20%. Featured at Qualcomm Annual Summit 2021 
+                        for strategic debug innovations enhancing competitive positioning.
+                    </p>
+                </div>
+                <div class="job-card scroll-reveal">
+                    <h3 class="job-title">System Engineer</h3>
+                    <p class="job-company">Intel Corporation</p>
+                    <p class="job-dates">May 2018 – May 2021</p>
+                    <p class="job-description">
+                        Led concurrency validation program for Intel QAT 2.0/3.0, achieving zero silicon respins across security/compression domains. 
+                        Automated fuse validation workflows, reducing post-silicon execution time by 20%. Published industry research at DTTC 2019 
+                        and DCG Innovation Summit 2019.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Scripts -->
-  <script src="script.js"></script>
-  <script>
-    // Faster typing effect
-    const subtitle = document.querySelector(".subtitle");
-    const alternatives = [
-      "Turning Complex Technologies into Impactful Products",
-      "Bridging Engineering Excellence with Strategic Vision",
-      "Driving AI Innovation from Silicon to Strategy",
-      "Leading Cross-Functional Teams to Deliver at Scale"
-    ];
-    let currentIndex = 0;
-    function typeWriter(text, element, speed = 60) {
-      element.textContent = "";
-      let i = 0;
-      const timer = setInterval(() => {
-        if (i < text.length) {
-          element.textContent += text.charAt(i);
-          i++;
-        } else {
-          clearInterval(timer);
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title scroll-reveal">Featured Projects</h2>
+                <p class="section-subtitle scroll-reveal">
+                    Innovative solutions spanning AI/ML, optimization, and product development
+                </p>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card scroll-reveal">
+                    <div class="project-icon">🏆</div>
+                    <h3 class="project-title">AI Tutor Platform</h3>
+                    <div class="project-award">1st Place - ASU × NVIDIA Hackathon 2025</div>
+                    <p class="project-description">
+                        GPU-accelerated, semi-Socratic RAG+LLM tutor for Data Science education. Features flashcards, game mode, 
+                        and point system with advanced knowledge retrieval and interactive learning mechanisms.
+                    </p>
+                    <p style="margin-bottom: 1rem;">
+                        <a href="https://www.youtube.com/watch?v=7OfkW2ry0wI&list=WL&index=4&t=13s" target="_blank" style="color:#1a365d;font-weight:600;">
+                            ▶ Watch Demo on YouTube
+                        </a> | 
+                        <a href="https://github.com/modelwith-neha/AI-Tutor" target="_blank" style="color:#1a365d;font-weight:600;">
+                            📂 View Code
+                        </a>
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">RAG</span>
+                        <span class="tech-tag">LLM Integration</span>
+                        <span class="tech-tag">GPU Acceleration</span>
+                        <span class="tech-tag">Educational AI</span>
+                        <span class="tech-tag">Game Design</span>
+                    </div>
+                </div>
+                
+                <div class="project-card scroll-reveal">
+                    <div class="project-icon">📈</div>
+                    <h3 class="project-title">Employee Attrition Prediction Pipeline</h3>
+                    <p class="project-description">
+                        Built ensemble of 12+ ML models (Logistic Regression, XGBoost, Random Forest, SVM, Neural Networks) 
+                        achieving 94%+ accuracy on IBM HR dataset with comprehensive churn driver analysis.
+                    </p>
+                    <p style="margin-bottom: 1rem;">
+                        <a href="https://github.com/modelwith-neha/IBM-attrition" target="_blank" style="color:#1a365d;font-weight:600;">
+                            📂 View on GitHub
+                        </a>
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Ensemble Methods</span>
+                        <span class="tech-tag">XGBoost</span>
+                        <span class="tech-tag">Neural Networks</span>
+                        <span class="tech-tag">Feature Engineering</span>
+                    </div>
+                </div>
+
+                <div class="project-card scroll-reveal">
+                    <div class="project-icon">👥</div>
+                    <h3 class="project-title">Customer Churn Analytics</h3>
+                    <p class="project-description">
+                        Comprehensive churn prediction system analyzing customer behavior patterns and implementing 
+                        retention strategy recommendations with advanced statistical modeling.
+                    </p>
+                    <p style="margin-bottom: 1rem;">
+                        <a href="https://github.com/modelwith-neha/CustomerChurn" target="_blank" style="color:#1a365d;font-weight:600;">
+                            📂 View on GitHub
+                        </a>
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Predictive Analytics</span>
+                        <span class="tech-tag">Customer Segmentation</span>
+                        <span class="tech-tag">Retention Strategy</span>
+                        <span class="tech-tag">Statistical Modeling</span>
+                    </div>
+                </div>
+
+                <div class="project-card scroll-reveal">
+                    <div class="project-icon">🎵</div>
+                    <h3 class="project-title">Spotify Songs Popularity Predictor</h3>
+                    <p class="project-description">
+                        ML model analyzing audio features, artist metrics, and temporal patterns to predict song popularity 
+                        with advanced feature engineering and audio signal processing.
+                    </p>
+                    <p style="margin-bottom: 1rem;">
+                        <a href="https://github.com/modelwith-neha/SpotifySongsPoupularity" target="_blank" style="color:#1a365d;font-weight:600;">
+                            📂 View on GitHub
+                        </a>
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Audio Analysis</span>
+                        <span class="tech-tag">Feature Engineering</span>
+                        <span class="tech-tag">Time Series</span>
+                        <span class="tech-tag">Music Analytics</span>
+                    </div>
+                </div>
+
+                <div class="project-card scroll-reveal">
+                    <div class="project-icon">🚀</div>
+                    <h3 class="project-title">GPT Workload Optimization</h3>
+                    <p class="project-description">
+                        MILP optimization model using Gurobi to balance cost-latency trade-offs in AI backend routing 
+                        across distributed GPU infrastructure for optimal resource allocation.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">MILP</span>
+                        <span class="tech-tag">Gurobi</span>
+                        <span class="tech-tag">GPU Infrastructure</span>
+                        <span class="tech-tag">Resource Optimization</span>
+                    </div>
+                </div>
+
+                <div class="project-card scroll-reveal">
+                    <div class="project-icon">📱</div>
+                    <h3 class="project-title">Indian Parliament Digital Platform</h3>
+                    <p class="project-description">
+                        Official Android apps for Rajya Sabha & Lok Sabha providing nationwide legislative access, 
+                        democratizing parliamentary information for millions of Indian citizens.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Android Development</span>
+                        <span class="tech-tag">Government Tech</span>
+                        <span class="tech-tag">Public Service</span>
+                        <span class="tech-tag">Digital Democracy</span>
+                    </div>
+                </div>
+
+                <div class="project-card scroll-reveal">
+                    <div class="project-icon">📊</div>
+                    <h3 class="project-title">Process Redesign & Optimization</h3>
+                    <p class="project-description">
+                        Applied Lean Six Sigma methodology reducing proposal creation DPMO by 60% and improving 
+                        sigma from 2.08 to 3.5 using FMEA and RPA implementation.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Lean Six Sigma</span>
+                        <span class="tech-tag">Process Improvement</span>
+                        <span class="tech-tag">FMEA</span>
+                        <span class="tech-tag">RPA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="publications">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title scroll-reveal">Research Publications</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card scroll-reveal">
+                    <div class="project-icon">📄</div>
+                    <h3 class="project-title">Compression with Authenticated Encryption</h3>
+                    <p class="project-description">
+                        Enhancing security on data-centric products.<br>
+                        <em style="color: var(--primary-color);">IEEE Conference Publication</em>
+                    </p>
+                </div>
+                <div class="project-card scroll-reveal">
+                    <div class="project-icon">🧠</div>
+                    <h3 class="project-title">Brain Computer Interface</h3>
+                    <p class="project-description">
+                        Review article: A comprehensive survey covering methods, applications, and challenges 
+                        in brain-computer interface technology.
+                    </p>
+                </div>
+                <div class="project-card scroll-reveal">
+                    <div class="project-icon">📱</div>
+                    <h3 class="project-title">Innovation Study: Gadget Addiction</h3>
+                    <p class="project-description">
+                        Research project on digital behavior patterns and their societal impact.<br>
+                        <a href="https://www.rajgurucollege.com/Innovation-Projects" target="_blank" style="color: var(--primary-color); font-weight: 600;">View Project →</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section id="leadership" class="leadership">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title scroll-reveal">Leadership & Engagement</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card scroll-reveal">
+                    <div class="project-icon">🎓</div>
+                    <h3 class="project-title">Teaching & Mentorship</h3>
+                    <p class="project-description">
+                        Teaching Assistant (NIT Goa, 2017–18)<br>
+                        Certified Teacher Coordinator, Teach India (2015)<br>
+                        Vice President, Young Association's Teaching Group NGO (2015–16)
+                    </p>
+                </div>
+                <div class="project-card scroll-reveal">
+                    <div class="project-icon">👥</div>
+                    <h3 class="project-title">Leadership Roles</h3>
+                    <p class="project-description">
+                        General Secretary, CS Dept (2016–17)<br>
+                        Founder & Core Member, Literary & Dramatics Society (2014–17)<br>
+                        Software Engineer Intern, NIC Delhi (2016)
+                    </p>
+                </div>
+                <div class="project-card scroll-reveal">
+                    <div class="project-icon">🎖️</div>
+                    <h3 class="project-title">Achievements</h3>
+                    <p class="project-description">
+                        2nd Place, National Academic Youth Congress (2015)<br>
+                        Content Developer, Quizential (2014)<br>
+                        Multiple divisional awards for technical innovation
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title scroll-reveal">Skills & Expertise</h2>
+            </div>
+            <div class="skills-categories scroll-reveal">
+                <!-- Validation & Hardware -->
+                <div class="skill-category">
+                    <h3 class="category-title">Validation & Hardware Expertise</h3>
+                    <div class="skills-grid">
+                        <span class="skill-tag">Power Management</span>
+                        <span class="skill-tag">AI Workload Validation</span>
+                        <span class="skill-tag">Concurrency Testing</span>
+                        <span class="skill-tag">DMA</span>
+                        <span class="skill-tag">Cryptography</span>
+                        <span class="skill-tag">Compression</span>
+                        <span class="skill-tag">SoC Boot/Reset</span>
+                        <span class="skill-tag">PCIe</span>
+                        <span class="skill-tag">DDR</span>
+                        <span class="skill-tag">Thermal Management</span>
+                    </div>
+                </div>
+
+                <!-- Platforms & Tools -->
+                <div class="skill-category">
+                    <h3 class="category-title">Platforms & Debug Tools</h3>
+                    <div class="skills-grid">
+                        <span class="skill-tag">Production Silicon</span>
+                        <span class="skill-tag">FPGA</span>
+                        <span class="skill-tag">Simics</span>
+                        <span class="skill-tag">ZeBu Emulation</span>
+                        <span class="skill-tag">Veloce</span>
+                        <span class="skill-tag">Trace32</span>
+                        <span class="skill-tag">JTAG</span>
+                        <span class="skill-tag">Logic Analyzers</span>
+                        <span class="skill-tag">UART</span>
+                        <span class="skill-tag">UEFI Shell</span>
+                        <span class="skill-tag">BIOS</span>
+                        <span class="skill-tag">Windbg</span>
+                    </div>
+                </div>
+
+                <!-- Programming & Development -->
+                <div class="skill-category">
+                    <h3 class="category-title">Programming & Development</h3>
+                    <div class="skills-grid">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">NumPy/Pandas</span>
+                        <span class="skill-tag">Scikit-Learn</span>
+                        <span class="skill-tag">C/C++</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">MATLAB</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Android Development</span>
+                    </div>
+                </div>
+
+                <!-- AI/ML & Analytics -->
+                <div class="skill-category">
+                    <h3 class="category-title">AI/ML & Analytics</h3>
+                    <div class="skills-grid">
+                        <span class="skill-tag">RAG/LLM Integration</span>
+                        <span class="skill-tag">GPU-Accelerated ML</span>
+                        <span class="skill-tag">cuDF</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">XGBoost</span>
+                        <span class="skill-tag">Neural Networks</span>
+                        <span class="skill-tag">Ensemble Methods</span>
+                        <span class="skill-tag">Feature Engineering</span>
+                        <span class="skill-tag">Predictive Modeling</span>
+                    </div>
+                </div>
+
+                <!-- Business & Optimization -->
+                <div class="skill-category">
+                    <h3 class="category-title">Business & Optimization</h3>
+                    <div class="skills-grid">
+                        <span class="skill-tag">Gurobi</span>
+                        <span class="skill-tag">MILP Optimization</span>
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Business Analytics</span>
+                        <span class="skill-tag">Lean Six Sigma</span>
+                        <span class="skill-tag">FMEA</span>
+                        <span class="skill-tag">RCA</span>
+                    </div>
+                </div>
+
+                <!-- Leadership & Process -->
+                <div class="skill-category">
+                    <h3 class="category-title">Leadership & Process Management</h3>
+                    <div class="skills-grid">
+                        <span class="skill-tag">Cross-Functional Leadership</span>
+                        <span class="skill-tag">JIRA/Agile</span>
+                        <span class="skill-tag">Risk Management</span>
+                        <span class="skill-tag">Product Strategy</span>
+                        <span class="skill-tag">Team Coordination</span>
+                        <span class="skill-tag">Process Improvement</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title scroll-reveal">Let's Connect</h2>
+                <p class="section-subtitle scroll-reveal" style="color: rgba(255,255,255,0.9);">
+                    Ready to discuss product strategy, AI innovation, or community impact? I'd love to hear from you.
+                </p>
+                <div class="contact-methods scroll-reveal">
+                    <div class="contact-method">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <a href="mailto:ntiwar12@asu.edu" style="color:white;">ntiwar12@asu.edu</a><br>
+                            <a href="mailto:tiwari.ne09@gmail.com" style="color:white;">tiwari.ne09@gmail.com</a>
+                        </div>
+                    </div>
+                    <a href="https://www.linkedin.com/in/neha-tiwarii/" class="contact-method" target="_blank">
+                        <div class="contact-icon">💼</div>
+                        <div>LinkedIn Profile</div>
+                    </a>
+                    <a href="https://github.com/modelwith-neha" class="contact-method" target="_blank">
+                        <div class="contact-icon">💻</div>
+                        <div>GitHub Portfolio</div>
+                    </a>
+                    <a href="tel:623-268-3814" class="contact-method">
+                        <div class="contact-icon">📱</div>
+                        <div>(623) 268-3814</div>
+                    </a>
+                </div>
+                <div class="scroll-reveal" style="margin-top: 2rem;">
+                    <p style="opacity: 0.9; margin-bottom: 1rem; font-size: 1.1rem;">📍 Currently based in Tempe, Arizona</p>
+                    <p style="opacity: 0.9; font-size: 1.1rem;">🎓 MS Business Analytics graduate student at Arizona State University (Dec 2025)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Neha Tiwari. Crafted with passion for innovation and impact.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Loading animation
+        window.addEventListener('load', function() {
+            const loadingBar = document.querySelector('.loading-bar');
+            loadingBar.style.width = '100%';
+            setTimeout(() => {
+                loadingBar.style.opacity = '0';
+            }, 500);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Typing effect for subtitle
+        const subtitle = document.querySelector(".subtitle");
+        const alternatives = [
+            "Turning Complex Technologies into Impactful Products",
+            "Bridging Engineering Excellence with Strategic Vision", 
+            "Driving AI Innovation from Silicon to Strategy",
+            "Leading Cross-Functional Teams to Deliver at Scale"
+        ];
+        let currentIndex = 0;
+
+        function typeWriter(text, element, speed = 50) {
+            element.style.opacity = '0.7';
+            element.textContent = "";
+            let i = 0;
+            const timer = setInterval(() => {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(timer);
+                    element.style.opacity = '1';
+                }
+            }, speed);
         }
-      }, speed);
-    }
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % alternatives.length;
-      subtitle.style.opacity = "0";
-      setTimeout(() => {
-        typeWriter(alternatives[currentIndex], subtitle, 60);
-        subtitle.style.opacity = "1";
-      }, 300);
-    }, 4000);
-  </script>
+
+        // Start typing animation after initial load
+        setTimeout(() => {
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % alternatives.length;
+                typeWriter(alternatives[currentIndex], subtitle, 50);
+            }, 4000);
+        }, 2000);
+
+        // Parallax effect for floating elements
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelectorAll('.floating-element');
+            const speed = 0.5;
+            
+            parallax.forEach((element, index) => {
+                const yPos = -(scrolled * speed * (index + 1) * 0.3);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+
+        // Add stagger animation to cards
+        const cards = document.querySelectorAll('.job-card, .project-card');
+        cards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Skill tags hover effect with random colors
+        const skillTags = document.querySelectorAll('.skill-tag');
+        const colors = [
+            'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+            'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+            'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+            'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
+        ];
+
+        skillTags.forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                this.style.background = randomColor;
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.background = 'var(--gradient-primary)';
+            });
+        });
+
+        // Add cursor trail effect
+        document.addEventListener('mousemove', function(e) {
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            trail.style.cssText = `
+                position: fixed;
+                width: 6px;
+                height: 6px;
+                background: var(--accent-color);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                left: ${e.clientX - 3}px;
+                top: ${e.clientY - 3}px;
+                opacity: 0.7;
+                animation: trailFade 0.8s ease-out forwards;
+            `;
+            document.body.appendChild(trail);
+            
+            setTimeout(() => {
+                trail.remove();
+            }, 800);
+        });
+
+        // CSS for trail animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes trailFade {
+                0% { opacity: 0.7; transform: scale(1); }
+                100% { opacity: 0; transform: scale(0.3); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Enhanced reveal animation with stagger
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        revealElements.forEach((el, index) => {
+            el.style.transitionDelay = `${index * 0.1}s`;
+        });
+    </script>
 </body>
 </html>
